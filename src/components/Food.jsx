@@ -2,16 +2,13 @@ import React from "react";
 import Dish from "./Dish.jsx";
 
 
-const Food = () => {
-   
+const Food = ({dishes}) => {
+  
     return (
         <div className="sva-jela">
-          <Dish />
-          <Dish />
-          <Dish />
-          <Dish />
-          <Dish />
-          <Dish />
+       {dishes.map((dish) => (
+         <Dish dish={dish} key={dish.id}/>
+       ))}
           
         </div>
       );

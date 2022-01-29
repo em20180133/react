@@ -73,6 +73,7 @@ p{
 .kartica-telo {
   margin: 10px;
   
+  
 }
 
 .dugme {
@@ -108,7 +109,18 @@ a {
   max-width: 500px;
 }
 
-.card-img-left {
+.kartica-slika{
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+  height: 180px;
+}
+
+.tekst{
+  margin-left: -6px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-style: italic;
+}
+.naziv{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin-left: -35px;
 }
