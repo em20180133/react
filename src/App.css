@@ -57,6 +57,7 @@ h3{
   border-radius: 10px;
   max-width: 195x;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  background-color: darksalmon;
 }
 
 .kartica-slika {
@@ -96,24 +97,40 @@ a {
   cursor: pointer;
 }
 
-.cart-container {
+.nar-container {
   margin: 20px;
+  width: 250px;
 }
 
-.card-cart {
+.nkartica {
   display: flex;
   flex-direction: row;
   border-style: solid;
   border-width: 2px;
-  border-color: rgb(211, 211, 211);
+  border-color:rgb(119, 114, 114);
   border-radius: 10px;
   max-width: 500px;
+  width: 450px;
+  background-color: darksalmon;
 }
 
 .kartica-slika{
   border-top-left-radius: 10px;
   border-bottom-left-radius: 0px;
   height: 180px;
+  width: 206px;
+}
+.nkartica-slika{
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 0px;
+  height: 180px;
+  width: 200px;
+ 
+}
+h2{
+  margin-top: 40px;
+  color: rgb(83, 90, 104);
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .tekst{

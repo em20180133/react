@@ -1,15 +1,16 @@
 import React from "react";
 import {MdOutlineFastfood} from "react-icons/md";
+import { Link } from "react-router-dom";
 
 function NavBar({brJela}) {
 
   return (
     <div className="MenuBar">
-      <a>GURMAN - BRZA HRANA</a>
-      <div className="naruceno">
+      <Link to="/">GURMAN - BRZA HRANA</Link>
+      <Link to="/narudzbina" className="naruceno">
         < MdOutlineFastfood/>
         <p className="brJela">{brJela}</p>
-      </div>
+      </Link>
     </div>
   );
 }

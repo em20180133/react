@@ -3,16 +3,19 @@ import './App.css';
 import MenuBar from "./components/MenuBar";
 import Food from "./components/Food";
 import { useState } from "react";
+import Narudzbina from "./components/Narudzbina";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
 function App() {
- // let brJela=0;
+
  const [brJela, setbrJela] = useState(0);
-  const dishes = [
+ const [narudzbinaJela, setnarudzbinaJela] = useState([]);
+  const [dishes,setDishes] = useState([
     {
       id: 0,
       title: "Capricciosa",
-      img:"https://i.ytimg.com/vi/RSNllyiyAuQ/maxresdefault.jpg",
+      img:"https://cdn.tasteatlas.com/images/dishes/5789ac96790b4e27b6e8ca102f917b2c.jpg?w=600&h=450",
       description:
         "Testo",
       amount: 0,
@@ -27,7 +30,7 @@ function App() {
     {
         id: 2,
         title: "Sladoled",
-        img:"https://www.mojenterijer.rs/storage/posts/thumbnail/2019/May/12584/pripremite-se-za-leto-ikea-lansira-veganski-sladoled-od-jagode.jpg",
+        img:"https://icecom.rs/wp-content/uploads/2021/04/sladoled-na-tocenje-1.jpg",
         description:"Dezert",
         amount: 0,
     },
@@ -49,27 +52,53 @@ function App() {
     {
         id: 5,
         title: "Grcki Giros",
-        img:"https://grckikutak.com/wp-content/uploads/2018/01/giros-1.jpg",
+        img:"https://slika.nezavisne.rs/2019/02/750x450/20190205181048_521546.jpg",
         description:"Tortilja",
         amount: 0,
     },
   
-  ];
-  const prom =<h3>  Brza hrana „Gurman“, 10 godina sa vama. Sigurno jedan od najboljih, najpovoljnijih i najprepoznatljivijih lokala. Dođite i probajte naše specijalitete,sigurno se necete pokajati.</h3>;
-  function dodajJelo(title) {
+  ]);
+
+  function refreshNarudzbina() {
+    let newDishes = dishes.filter((dish) => dish.amount > 0);
+    setnarudzbinaJela(newDishes);
+  }
+
+  function dodajJelo(title,id) {
     console.log("Dodato je jelo u narudzbinu: " + title);
     setbrJela(brJela + 1);
+    dishes.forEach((dish) => {
+      if (dish.id === id) {
+        dish.amount++;
+      }
+      console.log(dish.amount);
+    });
+    refreshNarudzbina();
   }
-  function ukloniJelo(title) {
-    console.log("Dodat je proizvod: " + title);
+  function ukloniJelo(title,id) {
+    console.log("Jelo je izbaceno iz narudzbine: " + title);
     setbrJela(brJela - 1);
+    dishes.forEach((dish) => {
+      if (dish.id === id) {
+        dish.amount--;
+      }
+      console.log(dish.amount);
+    });
+    refreshNarudzbina();
   }
- return (<div className="App">
+
+  
+
+ return (
+ <BrowserRouter className="App">
     <MenuBar brJela={brJela}></MenuBar>
-    <Food dishes={dishes} onAdd={dodajJelo} onRemove={ukloniJelo}/>
     
-   {prom}
-    </div>
+    <Routes>
+        <Route path="/" element={<Food dishes={dishes} onAdd={dodajJelo} onRemove={ukloniJelo}/>} />
+        <Route path="/narudzbina" element={<Narudzbina dishes={narudzbinaJela} />} />
+      </Routes>
+   
+    </BrowserRouter>
     );
 
 }
