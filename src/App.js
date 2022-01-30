@@ -2,8 +2,12 @@
 import './App.css';
 import MenuBar from "./components/MenuBar";
 import Food from "./components/Food";
+import { useState } from "react";
+
 
 function App() {
+ // let brJela=0;
+ const [brJela, setbrJela] = useState(0);
   const dishes = [
     {
       id: 0,
@@ -51,12 +55,20 @@ function App() {
     },
   
   ];
-  //const prom =<h3>  Brza hrana „Gurman“, 10 godina sa vama. Sigurno jedan od najboljih, najpovoljnijih i najprepoznatljivijih lokala. Dođite i probajte naše specijalitete,sigurno se necete pokajati.</h3>;
-  return (<div className="App">
-    <MenuBar></MenuBar>
-    <Food dishes={dishes} />
+  const prom =<h3>  Brza hrana „Gurman“, 10 godina sa vama. Sigurno jedan od najboljih, najpovoljnijih i najprepoznatljivijih lokala. Dođite i probajte naše specijalitete,sigurno se necete pokajati.</h3>;
+  function dodajJelo(title) {
+    console.log("Dodato je jelo u narudzbinu: " + title);
+    setbrJela(brJela + 1);
+  }
+  function ukloniJelo(title) {
+    console.log("Dodat je proizvod: " + title);
+    setbrJela(brJela - 1);
+  }
+ return (<div className="App">
+    <MenuBar brJela={brJela}></MenuBar>
+    <Food dishes={dishes} onAdd={dodajJelo} onRemove={ukloniJelo}/>
     
-   
+   {prom}
     </div>
     );
 
